@@ -1,0 +1,10 @@
+<h1>List: <%=@list.name%></h1>
+<p><%=@list.description%></p>
+
+<%@list.tasks.each do |task|%>
+
+	<%=text_field task.complite, ""%><p><%=task.name%></p>
+
+<%end%>
+
+<p> <%=link_to "back", lists_url%></p>

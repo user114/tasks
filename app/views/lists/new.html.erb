@@ -1,0 +1,17 @@
+
+<%=form_for @list do |l|%>
+<p>
+	<%=l.label "Name:"%>
+	<%=l.text_field :name%>
+</p>
+
+<p>
+	<%=l.label "Description:"%>
+	<%=l.text_field :description%>
+</p>
+
+<div class="actions">
+    <%= l.submit "Create" %>
+</div>
+
+<% end %>

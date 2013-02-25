@@ -1,0 +1,14 @@
+<h1>TASK LIST</h1>
+
+<%=link_to "Add", :action => :new%>
+
+<hr/>
+
+<%@lists.each do |list| %>
+
+<h1><%= link_to "#{list.name}", list_url(list) %></h1> 
+<p><%= list.description %></p>
+<p><%=link_to "edit", edit_list_url(list)%> | <%=link_to "delete", list_url(list), :method => :delete%></p>
+
+
+<% end %>
