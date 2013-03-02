@@ -1,9 +1,19 @@
 <h1>List: <%=@list.name%></h1>
 <p><%=@list.description%></p>
 
-<%@list.tasks.each do |task|%>
+<%@list.tasks.each do |t|%>
 
-	<%=text_field task.complite, ""%><p><%=task.name%></p>
+<div onClick='alert("hello")'>
+	<p><%=check_box :t, :complite%><%=t.name%></p>
+</div>
+<%end%>
+
+<hr />
+
+<%=form_for @list.tasks, :url => {:controller => 'lists', :action => 'create_task'} do |f|%>
+
+	<%=f.text_field :name%>
+	<%=f.submit "create"%>
 
 <%end%>
 

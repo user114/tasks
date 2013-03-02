@@ -5,6 +5,7 @@ class ListsController < ApplicationController
 
   def show
   	@list = List.find(params[:id])
+    #@task = @list.tasks.new
   end
 
   def new 
@@ -16,7 +17,7 @@ class ListsController < ApplicationController
   	if(list.save)
   		redirect_to list_url(list)
   	else
-  		redirect_to lists_index_url
+  		redirect_to lists_url
   	end
   end
 
@@ -39,4 +40,15 @@ class ListsController < ApplicationController
   		redirect_to lists_url
   	end
   end
+
+  def create_task
+    list = List.find(params[:id])
+    if list
+      task = list.tasks.new(params[:task])
+      task.save
+      redirect_to list_url(list)
+    end
+
+  end
+
 end

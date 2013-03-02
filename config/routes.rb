@@ -3,6 +3,9 @@ Tasks::Application.routes.draw do
   root :to => 'lists#index'
 
   resources :lists do
+    member do
+      put 'create_task'
+    end
     resources :tasks
   end
 
