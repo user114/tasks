@@ -51,4 +51,14 @@ class ListsController < ApplicationController
 
   end
 
+  def finish_task
+    list = List.find(params[:id])
+    task = list.tasks.find(params[:task_id])
+    if task
+      task.complite = true
+      task.save
+    end
+    redirect_to list_url(list)
+  end
+
 end

@@ -3,14 +3,21 @@
 
 <%@list.tasks.each do |t|%>
 
-<div onClick='alert("hello")'>
-	<p><%=check_box :t, :complite%><%=t.name%></p>
+<div onClick="lineText('elem<%=t.id%>');" name="elem<%=t.id%>" style="text-align: left; margin-left: 10%">
+	<p>
+		<del>
+		<%=if(t.complite) then '<del>'; end%>
+		<%=t.name()%> 
+		<%=if(t.complite) then '</del>'; end%>
+		</del>
+		<%=link_to "complite", :controller => 'lists', :action => 'finish_task', :task_id => t.id%> | <%=link_to "delete", list_task_url(t), :method => :delete%>
+	</p>
 </div>
 <%end%>
 
 <hr />
 
-<%=form_for @list.tasks, :url => {:controller => 'lists', :action => 'create_task'} do |f|%>
+<%=form_for :task, :url => {:controller => 'lists', :action => 'create_task'} do |f|%>
 
 	<%=f.text_field :name%>
 	<%=f.submit "create"%>

@@ -4,7 +4,8 @@ Tasks::Application.routes.draw do
 
   resources :lists do
     member do
-      put 'create_task'
+      post 'create_task'
+      get 'finish_task'
     end
     resources :tasks
   end
